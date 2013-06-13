@@ -3,6 +3,7 @@
 namespace Webpay\Tests\Service;
 
 use Webpay\Webpay;
+use Webpay\Charge;
 
 class ChargeTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,9 +27,10 @@ class ChargeTest extends \PHPUnit_Framework_TestCase
             ],
         ]);
 
-        $this->assertInternalType('array', $charge);
-        $this->assertStringStartsWith('ch_', $charge['id']);
-        $this->assertEquals(4242, $charge['card']['last4']);
+        $this->assertInstanceOf('Webpay\\Charge', $charge);
+        $this->assertStringStartsWith('ch_', $charge->id);
+        // TODO: $charge->card->last4
+        $this->assertEquals(4242, $charge->card['last4']);
 
         return $charge;
     }
@@ -36,12 +38,12 @@ class ChargeTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testCreateCharge
      */
-    public function testGetCharge(array $charge)
+    public function testGetCharge(Charge $charge)
     {
-        $fetchedCharge = $this->webpay->api('charge.get', $charge['id']);
+        $fetchedCharge = $this->webpay->api('charge.get', $charge->id);
 
-        $this->assertInternalType('array', $fetchedCharge);
-        $this->assertEquals($charge['id'], $fetchedCharge['id']);
+        $this->assertInstanceOf('Webpay\\Charge', $fetchedCharge);
+        $this->assertEquals($charge->id, $fetchedCharge->id);
 
         return $fetchedCharge;
     }
@@ -49,15 +51,15 @@ class ChargeTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends testGetCharge
      */
-    public function testRefundCharge(array $charge)
+    public function testRefundCharge(Charge $charge)
     {
-        $refundedCharge = $this->webpay->api('charge.refund', $charge['id'], [
+        $refundedCharge = $this->webpay->api('charge.refund', $charge->id, [
             'amount' => 500,
         ]);
 
-        $this->assertInternalType('array', $refundedCharge);
-        $this->assertEquals($charge['id'], $refundedCharge['id']);
-        $this->assertEquals(500, $refundedCharge['amount_refunded']);
+        $this->assertInstanceOf('Webpay\\Charge', $refundedCharge);
+        $this->assertEquals($charge->id, $refundedCharge->id);
+        $this->assertEquals(500, $refundedCharge->amountRefunded);
     }
 
     /**

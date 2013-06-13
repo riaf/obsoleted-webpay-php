@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "guzzle/guzzle": "3.*"
+        "guzzle/guzzle": "3.*",
+        "doctrine/annotations": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"

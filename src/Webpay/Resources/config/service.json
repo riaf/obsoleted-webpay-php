@@ -20,6 +20,7 @@
       "httpMethod": "POST",
       "uri": "/v1/charges",
       "summary": "新しい課金の作成",
+      "responseClass": "Webpay\\Charge",
       "parameters": {
         "amount": {
           "location": "postField",
@@ -50,6 +51,7 @@
       "httpMethod": "GET",
       "uri": "/v1/charges/{id}",
       "summary": "課金オブジェクトの取得",
+      "responseClass": "Webpay\\Charge",
       "parameters": {
         "id": {
           "location": "uri",
@@ -62,6 +64,7 @@
       "httpMethod": "POST",
       "uri": "/v1/charges/{id}/refund",
       "summary": "課金の返金",
+      "responseClass": "Webpay\\Charge",
       "parameters": {
         "id": {
           "location": "uri",
