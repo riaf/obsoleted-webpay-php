@@ -1,0 +1,177 @@
+{
+  "name": "webpay",
+  "apiVersion": "v1",
+  "baseUrl": "https://api.webpay.jp",
+  "operations": {
+    "_abstract_list": {
+      "httpMethod": "GET",
+      "parameters": {
+        "count": {
+          "location": "query",
+          "type": "integer"
+        },
+        "offset": {
+          "location": "query",
+          "type": "integer"
+        }
+      }
+    },
+    "charge.create": {
+      "httpMethod": "POST",
+      "uri": "/v1/charges",
+      "summary": "新しい課金の作成",
+      "parameters": {
+        "amount": {
+          "location": "postField",
+          "type": "integer",
+          "required": true
+        },
+        "currency": {
+          "location": "postField",
+          "type": "string",
+          "required": true,
+          "default": "jpy"
+        },
+        "customer": {
+          "location": "postField",
+          "type": "string"
+        },
+        "card": {
+          "location": "postField",
+          "type": "array"
+        },
+        "description": {
+          "location": "postField",
+          "type": "string"
+        }
+      }
+    },
+    "charge.get": {
+      "httpMethod": "GET",
+      "uri": "/v1/charges/{id}",
+      "summary": "課金オブジェクトの取得",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "charge.refund": {
+      "httpMethod": "POST",
+      "uri": "/v1/charges/{id}/refund",
+      "summary": "課金の返金",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "required": true
+        },
+        "amount": {
+          "location": "postField",
+          "type": "integer"
+        }
+      }
+    },
+    "charge.list": {
+      "extends": "_abstract_list",
+      "uri": "/v1/charges",
+      "summary": "課金履歴のリスト",
+      "parameters": {
+        "customer": {
+          "location": "query",
+          "type": "string"
+        }
+      }
+    },
+    "customer.create": {
+      "httpMethod": "POST",
+      "uri": "/v1/customer",
+      "summary": "新しい顧客の作成",
+      "parameters": {
+        "card": {
+          "location": "postField",
+          "type": "array"
+        },
+        "email": {
+          "location": "postField",
+          "type": "string"
+        },
+        "description": {
+          "location": "postField",
+          "type": "string"
+        },
+        "account_balance": {
+          "location": "postField",
+          "type": "integer"
+        },
+        "plan": {
+          "location": "postField",
+          "type": "string"
+        },
+        "trial_end": {
+          "location": "postField",
+          "type": "integer"
+        }
+      }
+    },
+    "customer.get": {
+      "httpMethod": "GET",
+      "uri": "/v1/customers/{id}",
+      "summary": "顧客オブジェクトの取得",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "customer.update": {
+      "httpMethod": "POST",
+      "uri": "/v1/customer/{id}",
+      "summary": "顧客情報の更新",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "required": true
+        },
+        "card": {
+          "location": "postField",
+          "type": "array"
+        },
+        "email": {
+          "location": "postField",
+          "type": "string"
+        },
+        "description": {
+          "location": "postField",
+          "type": "string"
+        },
+        "account_balance": {
+          "location": "postField",
+          "type": "integer"
+        }
+      }
+    },
+    "customer.delete": {
+      "httpMethod": "DELETE",
+      "uri": "/v1/customers/{id}",
+      "summary": "顧客オブジェクトの削除",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "customer.list": {
+      "extends": "_abstract_list",
+      "uri": "/v1/charges",
+      "summary": "顧客リスト"
+    }
+  }
+}
