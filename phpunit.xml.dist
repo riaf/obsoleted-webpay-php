@@ -15,8 +15,8 @@
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="true" />
     </logging>
     <testsuites>
-        <testsuite name="Webpay Test Suite">
-            <directory>./tests/Webpay/</directory>
+        <testsuite name="WebPay Test Suite">
+            <directory>./tests/WebPay/</directory>
         </testsuite>
     </testsuites>
     <filter>
