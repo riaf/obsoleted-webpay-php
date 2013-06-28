@@ -1,5 +1,5 @@
 {
-    "name": "riaf/webpay-php",
+    "name": "webpay/webpay",
     "description": "WebPay PHP Bindings",
     "license": "MIT",
     "authors": [
