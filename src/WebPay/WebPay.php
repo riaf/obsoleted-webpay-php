@@ -1,16 +1,16 @@
 <?php
 
-namespace Webpay;
+namespace WebPay;
 
 use Guzzle\Common\Event;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
-use Webpay\Exception\WebpayApiException;
-use Webpay\Exception\WebpayCardException;
-use Webpay\Exception\WebpayException;
-use Webpay\Exception\WebpayRequestException;
+use WebPay\Exception\WebPayApiException;
+use WebPay\Exception\WebPayCardException;
+use WebPay\Exception\WebPayException;
+use WebPay\Exception\WebPayRequestException;
 
-class Webpay
+class WebPay
 {
     /**
      * @var Client $client
@@ -69,7 +69,7 @@ class Webpay
      * Set apiKey
      *
      * @param string $apiKey
-     * @return Webpay
+     * @return WebPay
      */
     public function setApiKey($apiKey)
     {
@@ -82,7 +82,7 @@ class Webpay
      * Set baseUrl
      *
      * @param string $baseUrl
-     * @return Webpay
+     * @return WebPay
      */
     public function setBaseUrl($baseUrl)
     {
@@ -101,7 +101,7 @@ class Webpay
 
     /**
      * @param Event $event
-     * @throws WebpayException
+     * @throws WebPayException
      */
     public function onRequestError(Event $event)
     {
@@ -117,19 +117,19 @@ class Webpay
 
             switch ($type) {
                 case 'card_error':
-                    $e = new WebpayCardException($message, $code);
+                    $e = new WebPayCardException($message, $code);
                     break;
 
                 case 'api_error':
-                    $e = new WebpayApiException($message, $code);
+                    $e = new WebPayApiException($message, $code);
                     break;
 
                 case 'invalid_request_error':
-                    $e = new WebpayRequestException($message, $code);
+                    $e = new WebPayRequestException($message, $code);
                     break;
 
                 default:
-                    $e = new WebpayException($message, $code);
+                    $e = new WebPayException($message, $code);
             }
 
             $e->setResponse($response);

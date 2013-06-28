@@ -1,10 +1,10 @@
 <?php
 
-namespace Webpay\Exception;
+namespace WebPay\Exception;
 
 use Guzzle\Http\Message\Response;
 
-class WebpayException extends \RuntimeException
+class WebPayException extends \RuntimeException
 {
     /**
      * @var Response $response
@@ -20,7 +20,7 @@ class WebpayException extends \RuntimeException
      * Set response.
      *
      * @param Response $response
-     * @return WebpayException
+     * @return WebPayException
      */
     public function setResponse(Response $response = null)
     {
@@ -43,7 +43,7 @@ class WebpayException extends \RuntimeException
      * Set data.
      *
      * @param array $data
-     * @return WebpayException
+     * @return WebPayException
      */
     public function setData($data = null)
     {

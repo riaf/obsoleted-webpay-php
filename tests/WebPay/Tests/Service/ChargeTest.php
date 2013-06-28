@@ -1,8 +1,8 @@
 <?php
 
-namespace Webpay\Tests\Service;
+namespace WebPay\Tests\Service;
 
-use Webpay\Webpay;
+use WebPay\WebPay;
 
 class ChargeTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class ChargeTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->webpay = new Webpay('test_secret_eHn4TTgsGguBcW764a2KA8Yd');
+        $this->webpay = new WebPay('test_secret_eHn4TTgsGguBcW764a2KA8Yd');
     }
 
     public function testCreateCharge()
@@ -61,7 +61,7 @@ class ChargeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Webpay\Exception\WebpayCardException
+     * @expectedException WebPay\Exception\WebPayCardException
      * @expectedExceptionCode 402
      */
     public function testCreateInvalidCharge()
@@ -77,7 +77,7 @@ class ChargeTest extends \PHPUnit_Framework_TestCase
                     'name' => 'KEI KUBO',
                 ],
             ]);
-        } catch (\Webpay\Exception\WebpayCardException $e) {
+        } catch (\WebPay\Exception\WebPayCardException $e) {
             $response = $e->getResponse();
             $data = $e->getData();
 
