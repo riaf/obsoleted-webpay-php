@@ -87,7 +87,7 @@
     },
     "customer.create": {
       "httpMethod": "POST",
-      "uri": "/v1/customer",
+      "uri": "/v1/customers",
       "summary": "新しい顧客の作成",
       "parameters": {
         "card": {
@@ -101,18 +101,6 @@
         "description": {
           "location": "postField",
           "type": "string"
-        },
-        "account_balance": {
-          "location": "postField",
-          "type": "integer"
-        },
-        "plan": {
-          "location": "postField",
-          "type": "string"
-        },
-        "trial_end": {
-          "location": "postField",
-          "type": "integer"
         }
       }
     },
@@ -130,7 +118,7 @@
     },
     "customer.update": {
       "httpMethod": "POST",
-      "uri": "/v1/customer/{id}",
+      "uri": "/v1/customers/{id}",
       "summary": "顧客情報の更新",
       "parameters": {
         "id": {
@@ -149,10 +137,6 @@
         "description": {
           "location": "postField",
           "type": "string"
-        },
-        "account_balance": {
-          "location": "postField",
-          "type": "integer"
         }
       }
     },
@@ -170,7 +154,7 @@
     },
     "customer.list": {
       "extends": "_abstract_list",
-      "uri": "/v1/charges",
+      "uri": "/v1/customers",
       "summary": "顧客リスト"
     }
   }

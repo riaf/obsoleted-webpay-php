@@ -1,6 +1,6 @@
 <?php
 
-namespace WebPay\Tests\Service;
+namespace WebPay\Tests;
 
 use WebPay\WebPay;
 
